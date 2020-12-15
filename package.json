@@ -1,0 +1,33 @@
+{
+  "name": "djscord",
+  "version": "1.0.0",
+  "description": "A blazing fast Node.js wrapper for the Discord API",
+  "main": "./src/index.js",
+  "dependencies": {
+    "ws": "^7.4.1",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@discordjs/opus": "^0.3.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djscord/djscord.git"
+  },
+  "keywords": [
+    "discord",
+    "api",
+    "discord.js",
+    "eris",
+    "nodecord"
+  ],
+  "author": "FHGDev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djscord/djscord/issues"
+  },
+  "homepage": "https://github.com/djscord/djscord#readme"
+}
