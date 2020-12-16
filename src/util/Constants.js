@@ -106,28 +106,78 @@ module.exports = {
             UNKNOWN_BRANCH: 10032,
             UNKNOWN_REDISTRIBUTABLE: 10036,
             UNKNOWN_GUILD_TEMPLATE: 10057,
-            
-        },
-    
-        API: {
-            Base: `https://discord.com/api`,
-        },
-    
-        CDN: {
-            Base: `https://cdn.discordapp.com`,
-            Avatar: (user_id, hash, type="png") => {
-                if (hash.startsWith("a_")) type = "gif"
-    
-                return `${module.exports.CDN.Base}/avatars/${user_id}/${hash}.${type}`;
-            },
-            
-            Icon: (guild_id, hash, type) => {
-                if (hash.startsWith("a_")) type = "gif";
-    
-                return `${module.exports.CDN.Base}/icons/${guild_id}/${hash}.${type}`;
-            },
-    
-    
+
         }
+    },
+
+    API: {
+        Base: `https://discord.com/api`,
+    },
+
+    CDN: {
+        Base: `https://cdn.discordapp.com`,
+        Avatar: (user_id, hash, type="png", size=256) => {
+            if (hash.startsWith("a_")) type = "gif"
+
+            return `https://cdn.discordapp.com/avatars/${user_id}/${hash}.${type}?size=${size}`;
+        },
+        
+        Icon: (guild_id, hash, type="png", size=256) => {
+            if (hash.startsWith("a_")) type = "gif";
+
+            return `https://cdn.discordapp.com/icons/${guild_id}/${hash}.${type}?size=${size}`;
+        },
+
+
+    },
+
+    JSON: {
+        Identify: {
+            op: 2,
+            d: {
+                token: "{{token}}",
+                properties: {
+                    $os: process.platform,
+                    $device: "djscord",
+                    $browser: "djscord"
+                },
+
+            }
+        }
+    },
+
+    Gateway_Events: {
+        'READY': 'ready',
+        'MESSAGE_CREATE': 'message',
+        'MESSAGE_UPDATE': 'messageUpdate',
+        'MESSAGE_DELETE': 'messageDelete',
+        'MESSAGE_DELETE_BULK': 'messageBulkDelete',
+        'MESSAGE_REACTION_ADD': 'messageReactionAdd',
+        'MESSAGE_REACTION_REMOVE': 'messageReactionRemove',
+        'MESSAGE_REACTION_REMOVE_ALL': 'messageReactionAllRemove',
+        'CHANNEL_CREATE': 'channelCreate',
+        'CHANNEL_UPDATE': 'channelUpdate',
+        'CHANNEL_DELETE': 'channelDelete',
+        'CHANNEL_PINS_UPDATE': 'channelPinsUpdate',
+        'GUILD_CREATE': 'guildCreate',
+        'GUILD_UPDATE': 'guildUpdate',
+        'GUILD_DELETE': 'guildDelete',
+        'GUILD_BAN_ADD': 'guildBanCreate',
+        'GUILD_BAN_REMOVE': 'guildBanDelete',
+        'GUILD_EMOJIS_UPDATE': 'guildEmojisUpdate',
+        'GUILD_INTEGRATIONS_UPDATE': 'guildIntegrationsUpdate',
+        'GUILD_ROLE_CREATE': 'roleCreate',
+        'GUILD_ROLE_UPDATE': 'roleUpdate',
+        'GUILD_ROLE_DELETE': 'roleDelete',
+        'GUILD_MEMBER_ADD': 'guildMemberJoin',
+        'GUILD_MEMBER_UPDATE': 'guildMemberUpdate',
+        'GUILD_MEMBER_REMOVE': 'guildMemberLeave',
+        'GUILD_MEMBER_CHUNK': 'guildMemberChunk',
+        'PRESENCE_UPDATE': 'guildMemberUpdate',
+        'VOICE_STATE_UPDATE': 'voiceStateUpdate',
+        'VOICE_SERVER_UPDATE': 'voiceServerUpdate',
+        'WEBHOOKS_UPDATE': 'webhookUpdate',
+        'USER_UPDATE': 'userUpdate',
+        'TYPING_START': 'userTypingStart',
     }
 }
